@@ -1,0 +1,47 @@
+<!-- card-flip.component.html -->
+<div class="card-container" [class.flipped]="isFlipped">
+    <div class="card-inner">
+
+        <!-- Front Face -->
+        <mat-card class="card-face card-front" appearance="outlined">
+            <div class="image-section">
+                <img mat-card-image [src]="profile.image" />
+            </div>
+
+            <div class="details-section">
+
+
+                <div class="details">
+                    <p class="name">{{profile.name}}</p>
+                </div>
+
+                <div class="other-details">
+                    {{ profile.age }} Yrs,
+                    {{ profile.height }},
+                    {{ profile.education }},
+                    {{ profile.rasi }},
+                    {{ profile.religion }} - {{ profile.caste }},
+                    {{ profile.district }}, {{ profile.state }}
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="button-section">
+
+                    <div class="like-buttons">
+                        <button mat-button (click)="navigateToView()" class="icon-button confirm-button">Yes</button>
+                        <button mat-button class="icon-button cancel-button">No</button>
+                    </div>
+
+                    <ng-template #interested>
+                        <img width="30" src="assets/illustration/checked.png" alt="" srcset="">
+                    </ng-template>
+                </div>
+            </div>
+        </mat-card>
+
+
+
+
+    </div>
+</div>

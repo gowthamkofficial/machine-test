@@ -1,0 +1,165 @@
+/* card-flip.component.css */
+
+.card-container {
+  perspective: 1000px;
+  width: 350px;
+  height: 550px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-container.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.image-section {
+  height: 350px;
+  overflow: hidden;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+      border-radius: 10px;
+}
+
+.details-section {
+  padding: 20px;
+}
+
+.icons-section {
+  display: flex;
+  gap: 10px;
+}
+
+.icons-section span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+}
+
+.icons-section .verified {
+  color: #7575e2;
+  font-weight: 600;
+}
+
+.icons-section .premium {
+  color: #cc75e2;
+  font-weight: 600;
+}
+
+.icons-section .icons {
+  font-size: 20px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.other-details {
+  padding-top: 0;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.shortlist {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shortlist:hover {
+  text-shadow: -1px -1px 10px #6871CE;
+}
+
+.like-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-text {
+  font-weight: 600;
+}
+
+.icon-button {
+  width: 40px;
+  height: 35px;
+  min-width: 50px;
+  border-radius: 46%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-button {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+}
+
+.confirm-button {
+  background-color: #ffa500;
+  color: white;
+}
+
+.confirm-button mat-icon {
+  color: white;
+}
+.short-listed-span{
+  color: #ffc100;
+}
+.short-listed{
+  fill: #ffc100 !important;
+}
+
+
+
+
+

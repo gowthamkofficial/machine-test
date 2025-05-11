@@ -1,0 +1,93 @@
+<div class="view-container">
+  <mat-card class="view-content">
+    <div>
+      <div class="image-section">
+        <swiper-container class="mySwipe2"
+          pagination="true"
+          pagination-clickable="true"
+          navigation="true"
+          space-between="30"
+          centered-slides="true"
+          autoplay-delay="2500"
+          autoplay-disable-on-interaction="false">
+
+          <swiper-slide>
+            <div class="image-wrapper">
+              <img [src]="profile.image" alt="Profile image" />
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="image-wrapper">
+              <img [src]="profile.image" alt="Profile image" />
+            </div>
+          </swiper-slide>
+
+        </swiper-container>
+      </div>
+
+      <div class="details-section">
+        <h2 class="profile-name">{{ profile.name }}</h2>
+        <table class="profile-table">
+          <tr>
+            <td><strong>Date of Birth</strong></td>
+            <td>{{ profile.date_of_birth }} (Age: {{ profile.age }})</td>
+            <td><strong>Height</strong></td>
+            <td>{{ profile.height }}</td>
+          </tr>
+          <tr>
+            <td><strong>Weight</strong></td>
+            <td>{{ profile.weight }}</td>
+            <td><strong>Mother Tongue</strong></td>
+            <td>{{ profile.mother_tongue }}</td>
+          </tr>
+          <tr>
+            <td><strong>Religion</strong></td>
+            <td>{{ profile.religion }}</td>
+            <td><strong>Caste</strong></td>
+            <td>{{ profile.caste }}</td>
+          </tr>
+          <tr>
+            <td><strong>Rasi</strong></td>
+            <td>{{ profile.rasi }}</td>
+            <td><strong>Nakshatram</strong></td>
+            <td>{{ profile.nakshatram }}</td>
+          </tr>
+          <tr>
+            <td><strong>Education</strong></td>
+            <td>{{ profile.education }}</td>
+            <td><strong>College/School</strong></td>
+            <td>{{ profile.college_or_school_name }}</td>
+          </tr>
+          <tr>
+            <td><strong>District</strong></td>
+            <td>{{ profile.district }}</td>
+            <td><strong>State</strong></td>
+            <td>{{ profile.state }}</td>
+          </tr>
+          <tr>
+            <td><strong>Nationality</strong></td>
+            <td>{{ profile.nationality }}</td>
+            <td><strong>Address</strong></td>
+            <td>{{ profile.address }}</td>
+          </tr>
+          <tr>
+            <td><strong>Father's Name</strong></td>
+            <td>{{ profile.father_name }}</td>
+            <td><strong>Mother's Name</strong></td>
+            <td>{{ profile.mother_name }}</td>
+          </tr>
+          <tr>
+            <td><strong>Siblings</strong></td>
+            <td colspan="3">
+              <ul>
+                <li *ngFor="let sibling of profile.sibling_details">
+                  {{ sibling.name }} - Age: {{ sibling.age }} - {{ sibling.married ? 'Married' : 'Unmarried' }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</div>

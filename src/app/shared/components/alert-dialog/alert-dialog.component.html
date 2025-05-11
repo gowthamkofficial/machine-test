@@ -1,0 +1,42 @@
+<div class="alert-dialog">
+    <!-- Icon Template -->
+    <ng-template #iconTemplate>
+      <mat-icon *ngIf="data.icon">{{ data.icon }}</mat-icon>
+    </ng-template>
+
+
+    <ng-container *ngIf="data.animation; else iconTemplate">
+      <img [src]="data.animation" alt="Alert Image" class="gif-image" />
+    </ng-container>
+  
+    <!-- Title and Description -->
+    <h2>{{ data.title }}</h2>
+    <p>{{ data.description }}</p>
+  
+    <!-- Image or Icon -->
+    <ng-container *ngIf="data.image; else iconTemplate">
+      <img [src]="data.image" alt="Alert Image" class="alert-image" />
+    </ng-container>
+  
+    <!-- Action Buttons -->
+    <div class="alert-actions">
+      <button
+        *ngIf="data.showCancel"
+        mat-button
+        class="cancel-btn"
+        (click)="closeDialog(false)"
+      >
+        {{ data.cancelButtonText || 'Cancel' }}
+      </button>
+      <button
+        *ngIf="data.showOk"
+        mat-button
+        class="ok-btn"
+        color="primary"
+        (click)="closeDialog(true)"
+      >
+        {{ data.okButtonText || 'OK' }}
+      </button>
+    </div>
+  </div>
+  

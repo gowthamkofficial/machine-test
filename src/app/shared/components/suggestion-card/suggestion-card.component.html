@@ -1,0 +1,118 @@
+<!-- card-flip.component.html -->
+<div class="card-container" [class.flipped]="isFlipped">
+    <div class="card-inner">
+
+        <!-- Front Face -->
+        <mat-card class="card-face card-front" appearance="outlined">
+            <div class="image-section" (click)="toggleFlip()">
+                <img mat-card-image [src]="profile.image" />
+            </div>
+
+            <div class="details-section">
+                <div class="icons-section">
+                    <span class="verified">
+                        <span class="material-symbols-outlined icons">verified_user</span> Verified
+                    </span>
+
+                    <span class="premium">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#cc75e2">
+                            <path
+                                d="M203-160v-60h554v60H203Zm-1-144-53-334q-5 2-9.5 2.5t-9.5.5q-21 0-35.5-14.5T80-685q0-21 14.5-36t35.5-15q21 0 36 15t15 36q0 8-2.5 16t-7.5 14l148 66 141-194q-14-6-22.5-18.5T429-830q0-21 15-35.5t36-14.5q21 0 36 14.5t15 35.5q0 16-8.5 28.5T500-783l141 194 148-66q-5-6-7.5-14t-2.5-16q0-21 15-36t35-15q21 0 36 15t15 36q0 21-15 35.5T829-635q-5 0-9-1t-9-3l-53 335H202Zm51-60h454l32-203-118 53-141-195-141 195-118-53 32 203Zm227 0Z" />
+                        </svg>
+                        Premium NRI
+                    </span>
+                </div>
+
+                <div class="details">
+                    <p class="name">{{profile.name}}</p>
+                </div>
+
+                <div class="other-details">
+                    {{ profile.age }} Yrs,
+                    {{ profile.height }},
+                    {{ profile.education }},
+                    {{ profile.rasi }},
+                    {{ profile.religion }} - {{ profile.caste }},
+                    {{ profile.district }}, {{ profile.state }}
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="button-section">
+                    <div class="shortlist" [ngClass]="profile?.status?.shortListed==true ? 'short-listed-span':''"
+                        style="cursor: pointer;" (click)="emitEvent('shortList')">
+                        <!-- <svg  xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
+                            fill="#999999">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+
+                            <path
+                                d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
+                        </svg> -->
+                        <svg [ngClass]="profile?.status?.shortListed==true ? 'short-listed':''"
+                            xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#999999">
+                            <path
+                                d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z" />
+                        </svg>
+                        {{profile?.status?.shortListed==true ? 'Shortlisted':'Shortlist'}}
+                    </div>
+
+                    <div class="like-buttons" *ngIf="profile?.status?.interested==false;else interested">
+                        <span class="like-text">Like her?</span>
+                        <button (click)="emitEvent('not-interested')" mat-button
+                            class="icon-button cancel-button"><mat-icon>close</mat-icon></button>
+                        <button (click)="emitEvent('interested')" mat-button
+                            class="icon-button confirm-button"><mat-icon>check</mat-icon></button>
+                    </div>
+
+                    <ng-template #interested>
+                        <img (click)="emitEvent('interested')" width="30" src="assets/illustration/checked.png" alt=""
+                            srcset="">
+                    </ng-template>
+                </div>
+            </div>
+        </mat-card>
+
+        <!-- Back Face -->
+        <!-- Back Face -->
+        <mat-card class="card-face card-back" appearance="outlined" (click)="toggleFlip()">
+            <div class="details-section">
+            
+
+                <div class="details">
+                    <p class="name">{{profile.name}}</p>
+                </div>
+
+                <div class="other-details">
+                    <p>{{profile.age}} Yrs, {{profile.height}}, {{profile.education}},</p>
+                    <p>{{profile.rasi}}, {{profile.religion}} - {{profile.caste}},</p>
+                    <p>{{profile.district}}, {{profile.state}}</p>
+                </div>
+
+                <!-- Family Details -->
+                <div class="family-details">
+                    <p><strong>Father's Name:</strong> {{profile.father_name}}</p>
+                    <p><strong>Mother's Name:</strong> {{profile.mother_name}}</p>
+                    <div class="siblings">
+                        <p><strong>Siblings:</strong></p>
+                            <li *ngFor="let sibling of profile.sibling_details">
+                                {{sibling.name}} (Age: {{sibling.age}}) - {{sibling.married ? 'Married' : 'NotMarried'}}
+                            </li>
+                    </div>
+                </div>
+
+                <!-- Other Details -->
+                <div class="additional-details">
+                    <p><strong>Rasi:</strong> {{profile.rasi}}</p>
+                    <p><strong>Nakshatram:</strong> {{profile.nakshatram}}</p>
+                    <p><strong>Mother Tongue:</strong> {{profile.mother_tongue}}</p>
+                    <p><strong>Nationality:</strong> {{profile.nationality}}</p>
+                    <p><strong>Address:</strong> {{profile.address}}</p>
+                </div>
+            </div>
+        </mat-card>
+
+
+    </div>
+</div>

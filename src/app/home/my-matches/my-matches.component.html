@@ -1,0 +1,23 @@
+<!-- <ng-container *ngIf="(service.showAllMyMatches()|async).data.length>0;else noData"> -->
+    <swiper-container class="mySwiper2" slides-per-view="4" space-between="2" pagination="true"
+        pagination-type="fraction" navigation="true"  loop="true" >
+        <ng-container *ngFor="let data of  suggestedProfiles;let i=index">
+            <swiper-slide>
+                <app-profiles-card [profile]="data"></app-profiles-card>
+            </swiper-slide>
+        </ng-container>
+
+    </swiper-container>
+<!-- </ng-container>  -->
+
+
+
+
+<ng-template #noData>
+
+    <div class="no-data">
+        <img src="assets/illustration/not-found.jpg" alt="">
+    </div>
+
+
+</ng-template>

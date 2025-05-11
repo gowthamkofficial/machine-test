@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="navigation">
+        <!-- <button mat-button> <mat-icon>arrow_back</mat-icon> Daily Recommendations</button> -->
+    </div>
+
+    <div class="recommendations">
+        <swiper-container appSwiper #swiper  effect="cards">
+
+            <ng-container *ngFor="let data of suggestedProfiles;let i=index;">
+                <swiper-slide>
+
+                    <app-suggestion-card (cardAction)="profileAction($event,i)" [profile]="data"></app-suggestion-card>
+
+                </swiper-slide>
+            </ng-container>
+
+
+        </swiper-container>
+    </div>
+
+
+</div>
