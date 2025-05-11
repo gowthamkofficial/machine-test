@@ -43,5 +43,11 @@ swiper-slide {
 
 
 
+@media (max-width: 576px) {
+    swiper-container{
+        width: 280px;
+    }
+}
+
 
 

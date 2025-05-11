@@ -59,3 +59,64 @@ mat-card{
   font-weight: bold;
   width: 180px;
 }
+
+
+@media (max-width: 768px) {
+  .view-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .view-content {
+    width: 100%;
+    margin: 0;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 300px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .profile-table {
+    font-size: 14px;
+  }
+
+  .profile-table td {
+    padding: 8px;
+  }
+
+  .profile-table td:first-child,
+  .profile-table td:nth-child(3) {
+    font-weight: bold;
+    width: auto;
+  }
+
+  .details-section {
+    margin-top: 20px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-wrapper {
+    height: 200px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .profile-table {
+    font-size: 12px;
+  }
+
+  .profile-table td {
+    padding: 6px;
+  }
+}

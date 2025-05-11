@@ -1,48 +1,36 @@
 .app-container {
-
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    // background-image: linear-gradient(to right top, #6a88b6, #48a3c3, #4bbbbb, #80cda4, #c3d992);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .sticky-toolbar {
-    
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: rgb(129, 161, 235);
-    color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgb(129, 161, 235);
+  color: white;
 }
 
-.menu{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu span{
-    padding-left: 20px;
-}
-
-.active {
-  font-weight: 600;
-  color:#2563eb; ; 
-  position: relative;
-}
-
-.active::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
+.menu {
   width: 100%;
-  height: 2px;
-  background-color:#2563eb; ;
-  border-radius: 1px;
-  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
 }
 
 .menu-list span {
@@ -54,7 +42,43 @@
 }
 
 .menu-list span:hover {
-  color: #2563eb; 
+  color: #2563eb;
 }
 
+.active {
+  font-weight: 600;
+  color: #2563eb;
+  position: relative;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #2563eb;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+
+@media (max-width: 576px) {
+  .sticky-toolbar{
+    width: 100%;
+  }
+
+  .menu{
+    display: flex;
+justify-content: center;
+flex-direction: column;
+  }
+
+  .sticky-toolbar{
+    height: 80px;
+  }
+
+
+}
 

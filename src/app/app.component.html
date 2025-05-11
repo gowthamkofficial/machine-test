@@ -1,25 +1,22 @@
 <div class="app-container">
-    <mat-toolbar class="sticky-toolbar">
-        <div class="menu">
+  <mat-toolbar class="sticky-toolbar">
+    <div class="menu">
 
-            <div class="menu-list">
-                <span routerLink="/profile-suggestions" routerLinkActive="active" style="cursor: pointer;">
-                    Daily Recommendations
-                </span>
-                <span routerLink="/my-matches" routerLinkActive="active" style="cursor: pointer;">
-                    My Matches
-                </span>
-            </div>
+      <div class="logo">matrimony.com</div>
 
-
-
-            <div class="logo">
-                matrimony.com
-            </div>
-        </div>
-    </mat-toolbar>
-
-    <div class="content">
-        <router-outlet></router-outlet>
+      <div class="menu-list">
+        <span routerLink="/profile-suggestions" routerLinkActive="active" style="cursor: pointer;">
+          Recommendations
+        </span>
+        <span routerLink="/my-matches" routerLinkActive="active" [ngClass]="isMatchesRoute ? 'active':''"
+          style="cursor: pointer;">
+          Matches
+        </span>
+      </div>
     </div>
+  </mat-toolbar>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -13,8 +13,6 @@ export class SuggestionCardComponent implements OnChanges {
   @Output() cardAction: EventEmitter<any> = new EventEmitter()
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.profile);
-
   }
   isFlipped = false;
 

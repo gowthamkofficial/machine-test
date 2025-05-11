@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { SwiperOptions } from 'swiper/types';
+import { ProfileService } from '../profile.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-view',
@@ -9,21 +11,36 @@ import { SwiperOptions } from 'swiper/types';
 })
 export class ProfileViewComponent implements OnInit, AfterViewInit {
   profile: any;
+  profileId
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private service: ProfileService,
+    private activatedRoute: ActivatedRoute
+  ) {
+
+    this.activatedRoute.params.subscribe((res: any) => {
+      this.profileId = res?.id;
+      this.getOneProfile()
+    })
+  }
 
   ngOnInit(): void {
-    this.http.get<any[]>('assets/responses/matrimony_profiles.json').subscribe(data => {
-      this.profile = data.find(p => p.id === 3); // Load specific profile
-    });
+
+  }
+
+
+  getOneProfile() {
+    this.service.getProfileById(this.profileId).subscribe((res) => {
+      this.profile = res
+    })
   }
 
   ngAfterViewInit(): void {
-    var swiper2El: any = document.querySelector(".mySwiper2");
+    var swiper2El: any = document.querySelector("mySwiper2");
     Object.assign(swiper2El, {
       grabCursor: true,
       effect: "creative",
-      loop:true,
+      loop: true,
       creativeEffect: {
         prev: {
           shadow: true,

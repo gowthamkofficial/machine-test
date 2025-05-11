@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { MatrimonyProfile } from '../core/models/profiles.model';
 
 @Injectable({
@@ -12,9 +12,22 @@ export class ProfileService {
   private myMatches: MatrimonyProfile[] = []
 
   constructor(private http: HttpClient) { }
-  getSuggestedProfiles() {
-    return this.http.get<MatrimonyProfile[]>('assets/responses/matrimony_profiles.json');
+  getSuggestedProfiles(): Observable<MatrimonyProfile[]> {
+    return this.http.get<MatrimonyProfile[]>('assets/responses/matrimony_profiles.json').pipe(
+      map((profiles: MatrimonyProfile[]) => {
+        return profiles.filter(profile =>
+          !this.myMatches.some(match => match.id === profile.id)
+        );
+      })
+    );
   }
+
+  getProfileById(id: number): Observable<MatrimonyProfile | undefined> {
+    return this.http.get<MatrimonyProfile[]>('assets/responses/matrimony_profiles.json').pipe(
+      map((profiles: MatrimonyProfile[]) => profiles.find(profile => profile.id == id))
+    );
+  }
+
 
   addMyMatches(profile: MatrimonyProfile) {
     this.myMatches.push(profile);

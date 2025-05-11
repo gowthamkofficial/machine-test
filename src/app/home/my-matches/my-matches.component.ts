@@ -49,7 +49,6 @@ export class MyMatchesComponent implements OnInit, AfterViewInit {
 
     }
 
-    console.log('Current breakpoint:', this.currentBreakpoint);
   }
 
   ngAfterViewInit(): void {
@@ -65,7 +64,6 @@ export class MyMatchesComponent implements OnInit, AfterViewInit {
   getAllSuggestedProfiles() {
     this.loader.open()
     this.service.getSuggestedProfiles().subscribe((res: MatrimonyProfile[]) => {
-      console.log(res);
       this.suggestedProfiles = res;
       setTimeout(() => {
         this.loader.close()

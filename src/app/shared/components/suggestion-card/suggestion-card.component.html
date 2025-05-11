@@ -60,10 +60,14 @@
 
                     <div class="like-buttons" *ngIf="profile?.status?.interested==false;else interested">
                         <span class="like-text">Like her?</span>
-                        <button (click)="emitEvent('not-interested')" mat-button
-                            class="icon-button cancel-button"><mat-icon>close</mat-icon></button>
-                        <button (click)="emitEvent('interested')" mat-button
-                            class="icon-button confirm-button"><mat-icon>check</mat-icon></button>
+
+                        <div class="buttons">
+                            <button (click)="emitEvent('not-interested')" mat-button
+                                class="icon-button cancel-button"><mat-icon>close</mat-icon></button>
+                            <button (click)="emitEvent('interested')" mat-button
+                                class="icon-button confirm-button"><mat-icon>check</mat-icon></button>
+                        </div>
+
                     </div>
 
                     <ng-template #interested>
@@ -78,7 +82,7 @@
         <!-- Back Face -->
         <mat-card class="card-face card-back" appearance="outlined" (click)="toggleFlip()">
             <div class="details-section">
-            
+
 
                 <div class="details">
                     <p class="name">{{profile.name}}</p>
@@ -96,9 +100,9 @@
                     <p><strong>Mother's Name:</strong> {{profile.mother_name}}</p>
                     <div class="siblings">
                         <p><strong>Siblings:</strong></p>
-                            <li *ngFor="let sibling of profile.sibling_details">
-                                {{sibling.name}} (Age: {{sibling.age}}) - {{sibling.married ? 'Married' : 'NotMarried'}}
-                            </li>
+                        <li *ngFor="let sibling of profile.sibling_details">
+                            {{sibling.name}} (Age: {{sibling.age}}) - {{sibling.married ? 'Married' : 'NotMarried'}}
+                        </li>
                     </div>
                 </div>
 

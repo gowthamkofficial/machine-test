@@ -1,14 +1,45 @@
-<!-- <ng-container *ngIf="(service.showAllMyMatches()|async).data.length>0;else noData"> -->
-    <swiper-container class="mySwiper2" slides-per-view="4" space-between="2" pagination="true"
-        pagination-type="fraction" navigation="true"  loop="true" >
-        <ng-container *ngFor="let data of  suggestedProfiles;let i=index">
-            <swiper-slide>
-                <app-profiles-card [profile]="data"></app-profiles-card>
-            </swiper-slide>
-        </ng-container>
+<ng-container *ngIf="(slidesPerView==3||slidesPerView==4)&&(service.showAllMyMatches()|async).data.length>2">
+    <ng-container *ngIf="(service.showAllMyMatches()|async).data.length>0;else noData">
+        <swiper-container class="mySwiper2" slides-per-view="3" space-between="20" pagination="true"
+            pagination-type="fraction" navigation="true" loop="true">
+            <ng-container *ngFor="let data of  (service.showAllMyMatches()|async).data;let i=index">
+                <swiper-slide>
+                    <app-profiles-card [profile]="data"></app-profiles-card>
+                </swiper-slide>
+            </ng-container>
 
-    </swiper-container>
-<!-- </ng-container>  -->
+        </swiper-container>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="slidesPerView==2&&(service.showAllMyMatches()|async).data.length==2">
+    <ng-container *ngIf="(service.showAllMyMatches()|async).data.length>0;else noData">
+        <swiper-container class="mySwiper2" slides-per-view="2" space-between="20" pagination="true"
+            pagination-type="fraction" navigation="true" loop="true">
+            <ng-container *ngFor="let data of  (service.showAllMyMatches()|async).data;let i=index">
+                <swiper-slide style="display: flex;justify-content: center;">
+                    <app-profiles-card [profile]="data"></app-profiles-card>
+                </swiper-slide>
+            </ng-container>
+
+        </swiper-container>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="slidesPerView==1||(service.showAllMyMatches()|async).data.length<=2">
+    <ng-container *ngIf="(service.showAllMyMatches()|async).data.length>0;else noData">
+        <swiper-container class="mySwiper2" slides-per-view="1" space-between="20" pagination="true"
+            pagination-type="fraction" navigation="true" loop="true">
+            <ng-container *ngFor="let data of  (service.showAllMyMatches()|async).data;let i=index">
+                <swiper-slide style="display: flex;justify-content: center;">
+                    <app-profiles-card [profile]="data"></app-profiles-card>
+                </swiper-slide>
+            </ng-container>
+
+        </swiper-container>
+    </ng-container>
+</ng-container>
+
 
 
 
