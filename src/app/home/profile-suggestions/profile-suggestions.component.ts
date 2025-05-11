@@ -87,10 +87,12 @@ export class ProfileSuggestionsComponent implements OnInit, AfterViewInit {
       const profile = this.suggestedProfiles[previousIndex];
 
       if (!profile.status.interested && !profile.status.shortListed) {
-        this.alertService.showAlert('Not-Interested', `You are not interested on ${profile?.name}!`, {
+        this.alertService.showAlert('Not Interested', `${event?.profile?.name} removed from your recommendations.`, {
           allowClose: true,
           showCancel: true,
-          image: 'assets/illustration/not-ok.jpg'
+          image: 'assets/illustration/not-ok.jpg',
+          cancelButtonText: 'Wait',
+          okButtonText: 'Not Interested'
         }).subscribe((res) => {
           if (res) {
             this.suggestedProfiles.splice(previousIndex, 1);
@@ -156,14 +158,16 @@ export class ProfileSuggestionsComponent implements OnInit, AfterViewInit {
         break;
 
       case 'not-interested':
-        this.alertService.showAlert('Not-Interested', `You are not interested on ${event?.profile?.name}!`, {
+        this.alertService.showAlert('Not Interested', `${event?.profile?.name} removed from your recommendations.`, {
           allowClose: true,
           showCancel: true,
-          image: 'assets/illustration/not-ok.jpg'
+          image: 'assets/illustration/not-ok.jpg',
+          cancelButtonText: 'Wait',
+          okButtonText: 'Not Interested'
         }).subscribe((res) => {
           if (res) {
             this.suggestedProfiles.splice(i, 1);
-            swiperEl.swiper.activeIndex = i+1;
+            swiperEl.swiper.activeIndex = i + 1;
             swiperEl.swiper.slideNext();
           }
         });
